@@ -9,6 +9,7 @@ export default class HjelpCommand extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const staff = '719930142604132482'
+    const moritz = '381453904749002756';
     var hjelpEmbed = new MessageEmbed()
       .setTitle('Hjelp')
       .setDescription(`
@@ -38,7 +39,8 @@ export default class HjelpCommand extends BaseCommand {
           value: 'Viser deg server-statuset, IP, antall pålogget o.l.',
           inline: true
         }
-      ]);
+      ])
+      .setColor('#FFFF55');;
     if (!message.member.roles.cache.has(staff)) {
       message.channel.send(hjelpEmbed);
     } else if (message.member.roles.cache.has(staff)) {
@@ -53,7 +55,11 @@ export default class HjelpCommand extends BaseCommand {
           value: 'Sender en oppdaterings-melding til <#719927990473064469>.',
           inline: true
         }
-      ]);
+      ])
+      .setColor('#FFAA00');
+      if (message.author.id == moritz) {
+        hjelpEmbed.setColor('#AA0000');
+      }
       message.channel.send(hjelpEmbed);
     }
   }

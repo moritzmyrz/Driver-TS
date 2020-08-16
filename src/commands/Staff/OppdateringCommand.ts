@@ -35,12 +35,7 @@ export default class OppdateringCommand extends BaseCommand {
       message.channel.send(noArgsEmbed);
       return;
     }
-
-    console.log(message.content);
-
     let oppdatering = message.content.slice(5).split('*').join('\n· ')
-
-    console.log(oppdatering);
 
     let embed = new MessageEmbed()
       .setColor('#158467')
