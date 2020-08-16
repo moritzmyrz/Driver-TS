@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client';
 
 export default class DistanseCommand extends BaseCommand {
   constructor() {
-    super('Distanse', 'Spiller', [ 'distance', 'dis' ]);
+    super('distanse', 'Spiller', [ 'distance', 'dis' ]);
   }
 
   async run(client: DiscordClient, message: Message, args: Array<any>) {
@@ -14,22 +14,22 @@ export default class DistanseCommand extends BaseCommand {
     let noArgs = new MessageEmbed()
         .setTitle('Distanse')
         .setColor('#f5e042')
-        .setDescription('Denne kommandoen måler horisontal distanse \nmellom punkt a (x1 z1) og punkt b (x2 z2).\n\n!distanse x1 z1 x2 z2');
+        .setDescription('Denne kommandoen måler horisontal distanse \nmellom punkt a (x1 z1) og punkt b (x2 z2).\n\n-distanse x1 z1 x2 z2');
 
     let formatError = new MessageEmbed()
         .setTitle('Feil')
         .setColor('#ff0000')
-        .setDescription('Bruk følgende format:\n!distanse x1 z1 x2 z2');
+        .setDescription('Bruk følgende format:\n-distanse x1 z1 x2 z2');
 
     let intError = new MessageEmbed()
         .setTitle('Feil')
         .setColor('#ff0000')
-        .setDescription('Koordinatene skal være tall. Bruk følgende format:\n\n!distanse x1 z1 x2 z2');
+        .setDescription('Koordinatene skal være tall. Bruk følgende format:\n\n-distanse x1 z1 x2 z2');
 
     let embed = new MessageEmbed()
         .setTitle('Distanse')
         .setColor('#4bf542')
-        .setFooter(`${client.user.username} | !distanse`, client.user.displayAvatarURL())
+        .setFooter(`${client.user.username} | -distanse`, client.user.displayAvatarURL())
         .addFields([
             {
                 name: 'Pos 1 X Z',

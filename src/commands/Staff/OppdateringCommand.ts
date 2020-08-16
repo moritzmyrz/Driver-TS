@@ -10,16 +10,29 @@ let month = date_ob.getMonth() + 1;
 
 export default class OppdateringCommand extends BaseCommand {
   constructor() {
-    super('Oppdatering', 'Admin', [ 'opt' ]);
+    super('Oppdatering', 'Staff', [ 'opt' ]);
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const moritz = '381453904749002756';
-    const author = <User>message.author;
+    const staff = '719930142604132482'
     const oppdateringsKanal = <TextChannel>client.channels.cache.get('719927990473064469');
 
-    if (author.id != moritz) {
+    if (!message.member.roles.cache.has(staff)) {
       message.channel.send('Du har ikke tilgang til dette.');
+      return;
+    }
+
+    if (!args[0]) {
+      let noArgsEmbed = new MessageEmbed()
+        .setTitle('Oppdatering')
+        .setDescription(`
+          Sender en oppdaterings-melding til <#719927990473064469>
+
+          Bruk \`\`*\`\` for et nytt punkt, ikke lag en ny linje i meldingen din.
+          Eksempel ->
+          \`\`-opt *Lagt til fly-kommando. *Oppdatert regel 39.\`\`
+        `);
+      message.channel.send(noArgsEmbed);
       return;
     }
 
@@ -30,6 +43,7 @@ export default class OppdateringCommand extends BaseCommand {
     console.log(oppdatering);
 
     let embed = new MessageEmbed()
+      .setColor('#158467')
       .setTitle(`${date}/${month}`)
       .setDescription(oppdatering);
 
