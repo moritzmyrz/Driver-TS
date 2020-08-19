@@ -12,7 +12,7 @@ export default class LMGTFYCommand extends BaseCommand {
     if (!args[0]) {
         message.channel.send(`Bruk kommandoen følgende: \`\`-lmgtfy <søk>\`\``)
         return;
-    } 
+    }
     message.channel.send(`https://lmgtfy.com/?q=${content}&iie=1`);
   }
 }

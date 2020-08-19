@@ -4,7 +4,7 @@ import DiscordClient from '../../client/client';
 
 export default class HjelpCommand extends BaseCommand {
   constructor() {
-    super('hjelp', 'Spiller', []);
+    super('hjelp', 'Generelt', []);
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
